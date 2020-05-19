@@ -1,0 +1,69 @@
+.controls {
+    width: 200px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    @media (max-width: 760px) {
+        margin: 15px auto;
+    }
+  
+    &__refresh {
+        margin-left: 3px;
+        cursor: pointer;
+    }
+
+    &__lang {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        background: rgba(76, 82, 85, 0.6);
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        cursor: pointer;
+
+    }
+
+    &__far {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+    }
+
+    &__cel {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        margin-right: 3px;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+    }
+}
