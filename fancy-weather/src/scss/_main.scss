@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 28px;
@@ -18,6 +18,7 @@ body {
 
 .container {
     margin: 0 auto;
+    position: relative;
     width: 90%;
     z-index: 1;
 }
@@ -40,8 +41,8 @@ body {
     color: rgb(33, 37, 41);
     height: 45px;
     margin-top: 40px;
-    background: rgba(76, 82, 85, 0.9);
-    border: 1px solid rgba(76, 82, 85, 0.9);
+    background: rgba(76, 82, 85, 0.6);
+    border: 1px solid rgba(228, 227, 227, 0.2);
     border-radius: 5px;
     @media (max-width: 500px) {
         flex-direction: column;
@@ -75,7 +76,7 @@ body {
     padding: 0px 15px;
     padding-left: 50px;
     padding-right: 150px;
-    opacity: 0.7;
+    opacity: 0.4;
 
     @media (max-width: 500px) {
         border: 0;
@@ -86,7 +87,7 @@ body {
     }
 }
 
-.search .search-input {
+.search-input {
     width: calc(100% - 45px);
     max-width: 1350px;
 }
@@ -128,7 +129,7 @@ body {
     width: 48px;
     height: 28px;
     background-image: url(../assets/img/tia.png);
-    right: 100px;
+    right: 80px;
     cursor: pointer;
     opacity: .8;
     transition: .2s;
@@ -149,7 +150,7 @@ body {
     background-size: 20px;
     background-position: center center;
     background-repeat: no-repeat;
-    right: 185px;
+    right: 165px;
     cursor: pointer;
     opacity: .8;
     transition: .2s;
@@ -171,7 +172,7 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     border-radius: 50%;
-    right: 160px;
+    right: 140px;
     cursor: pointer;
     opacity: .8;
     transition: .2s;
@@ -238,9 +239,174 @@ body {
     color: rgb(214, 44, 26);
 
     @media (max-width: 500px) {
-        padding: 50px 10px 0 10px;
+        padding: 10px 10px 0 10px;
     }
 }
+
+.active {
+    background: rgba(45, 48, 49, 0.9);
+}
+
+.weather {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.city {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+    @media (max-width: 374px) {
+        font-size: 32px;
+    }
+}
+
+.date {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.time {
+    margin-left: 10px;
+}
+
+.current {
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width: 760px) {
+        width: 80%;
+    }
+
+}
+
+.temp__cur {
+    font-size: 200px;
+    padding-top: 130px;
+
+    @media (max-width: 760px) {
+        padding-top: 160px;
+    }
+}
+
+.summary__wrapper {
+    padding-top: 110px;
+    margin-right: 20%;
+}
+
+.icon {
+    width: 170px;
+    position: absolute;
+    right: 35%;
+    bottom: 110px;
+
+    @media (max-width: 1280px) {
+        bottom: 70%;
+        left: 70%;
+    }
+  
+}
+
+.icon-small {
+    width: 100px;
+    position: absolute;
+    left: 80px;
+    bottom: 0;
+}
+
+.daily {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+    @media (max-width: 1180px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 760px) {
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+}
+
+.day {
+    position: relative;
+    &__name {
+        font-size: 24px;
+       
+    }
+    &__temp {
+        font-size: 60px;
+        margin-top: 55px;
+    }
+
+    @media (max-width: 1180px) {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 760px) {
+        margin-bottom: 40px;
+    }
+}
+
+.map {
+    width: 462px;
+    height: 400px;
+    display: block;
+    position: absolute;
+    top: 29%;
+    right: 0;
+    border-radius: 20px;
+
+    @media (max-width: 1180px) {
+        top: 50%;
+    }
+
+    @media (max-width: 760px) {
+        width: 100%;
+        height: 320px;
+        display: block;
+        position: inherit;
+    }
+}
+
+.data-location {
+    display: flex;
+    position: absolute; 
+    flex-direction: column;
+    top: 90%;
+    right: 0;
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+
+    @media (max-width: 760px) {
+        position: inherit;
+        font-size: 16px;
+        line-height: 25px;
+        text-align: end;
+    }
+
+}
+
+
+
+
 
 @media (max-width: 820px) {
     .search-tia {
@@ -254,7 +420,4 @@ body {
         right: 110px;
     }
 
-    .search-input {
-        padding-right: 50px;
-    }
-    }
+}
