@@ -3,8 +3,6 @@
 /* eslint-disable no-new */
 /* eslint-disable consistent-return */
 
-import { hideSpinner  } from '../components/spinner/spinner.components';
-
 const errorHandler = (error) => {
     const info = document.querySelector('.info');
     info.innerText = error;
@@ -55,11 +53,13 @@ const getUrlBg = async (currWeather) => {
         const {lat} = jsonResponse.results[0].geometry;
         const {lng} = jsonResponse.results[0].geometry;
         const cityLoc = `${lat},${lng}`;
-        // render city
-        const cityCurrent = jsonResponse.results[0].components.city;
+        let cityCurrent = jsonResponse.results[0].components.city;
         const {country} = jsonResponse.results[0].components;
         const cityCont = document.querySelector('.city');
-        cityCont.innerHTML = `${cityCurrent}, ${country}`;
+        if (!cityCurrent) {
+          cityCurrent = '';
+        }
+        cityCont.innerHTML = `${cityCurrent} ${country}`;
           
         return cityLoc;
         }

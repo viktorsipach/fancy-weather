@@ -34,17 +34,11 @@ const getWeekDay = (date,indexDay,lang) => {
   
     const getCurrentDate = (zone,lang) => {
       const date = new Date();
-      const optionsDate = {day: 'numeric',hour: 'numeric', minute: 'numeric',timeZone: `${zone}` };
+      const optionsDate = {hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: `${zone}` };
       const dateCont = document.querySelector('.date');
       const weekday = getWeekDay(date,0,lang);
       const month = getMonth(date,lang);
-    
-      if(lang === 'ru' || lang === 'be') {
-        dateCont.innerHTML = `${weekday.slice(0,3)} ${date.toLocaleString(`${lang}`,{day: 'numeric'}).replace(/,/g,'')} ${month}`;
-      } else {
-        dateCont.innerText = `${weekday.slice(0,3)} ${month} ${date.toLocaleString(`${lang}`,optionsDate).replace(/,/g,'')} `;
-      }
-      
+      dateCont.innerText = `${weekday.slice(0,3)} ${date.toLocaleString(`${lang}`,{day: 'numeric'}).replace(/,/g,'')} ${month} ${date.toLocaleString(`${lang}`,optionsDate).replace(/,/g,'')}`;
     }
   
     export { getWeekDay,getMonth,getCurrentDate };

@@ -21,13 +21,16 @@ body {
     position: relative;
     width: 90%;
     z-index: 1;
+    opacity: 1;
+    transition: 1s;
 }
 
 .header {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .search {
@@ -109,6 +112,7 @@ body {
     height: 46px;
     padding: 8px 15px;
     width: 90px;
+    opacity: 0.6;
 
     @media (max-width: 500px) {
         border-radius: 5px;
@@ -253,10 +257,17 @@ body {
     font-size: 20px;
     line-height: 28px;
     color: #FFFFFF;
+    opacity: 1;
+    transition: 1s;
+}
+
+.hide {
+    opacity: 0;
 }
 
 .city {
     font-size: 36px;
+    line-height: 36px;
     margin-bottom: 10px;
     text-transform: uppercase;
 
@@ -304,15 +315,20 @@ body {
 .icon {
     width: 170px;
     position: absolute;
-    right: 35%;
-    bottom: 110px;
+    right: 110px;
+    bottom: 115px;
 
-    @media (max-width: 1280px) {
-        bottom: 70%;
-        left: 70%;
+    @media (max-width: 1000px) {
+        right: 0px;
+        bottom: 250px;
     }
-  
-}
+
+    @media (max-width: 765px) {
+        right: -60px;
+        bottom: 275px;
+    }
+    }
+
 
 .icon-small {
     width: 100px;
@@ -365,12 +381,14 @@ body {
     height: 400px;
     display: block;
     position: absolute;
-    top: 29%;
+    top: 4%;
     right: 0;
     border-radius: 20px;
+    opacity: 1;
+    transition: 1s;
 
-    @media (max-width: 1180px) {
-        top: 50%;
+    @media (max-width: 1200px) {
+        top: 35%;
     }
 
     @media (max-width: 760px) {
@@ -385,7 +403,7 @@ body {
     display: flex;
     position: absolute; 
     flex-direction: column;
-    top: 90%;
+    top: 80%;
     right: 0;
     font-family: Montserrat,sans-serif;
     font-style: normal;
@@ -393,6 +411,8 @@ body {
     font-size: 25px;
     line-height: 35px;
     color: #FFFFFF;
+    opacity: 1;
+    transition: 1s;
 
 
     @media (max-width: 760px) {

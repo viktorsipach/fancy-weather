@@ -1,5 +1,7 @@
-import {getCurrentDate, getWeekDay} from './date.utils';
-import {initMap} from '../data/api.data';
+/* eslint-disable import/prefer-default-export */
+import { getCurrentDate, getWeekDay } from './date.utils';
+import { initMap } from '../data/api.data';
+import { hideSpinner  } from '../components/spinner/spinner.components';
 
 
 const fahrToCel = (temp) => {
@@ -10,15 +12,22 @@ const fahrToCel = (temp) => {
   return temp.toFixed(0);
 }
 
-const renderCurTemp = ( temp, nameIcon) => {
+const renderCurTemp = ( temp ) => {
   const currentTemp = document.querySelector('.temp__cur');
-  const currentCont =  document.querySelector('.current');
   const currentTempCel = fahrToCel( temp );
+  currentTemp.innerText = `${currentTempCel}°`;
+}
+
+const renderCurIcon = (nameIcon) => {
+  const currentCont =  document.querySelector('.current');
+  const icon = document.querySelector('.icon')
+  if (icon) {
+    icon.remove()
+  }
   const currentIconCont = document.createElement('img');
   currentIconCont.className = 'icon';
   currentIconCont.src = `./assets/img/${nameIcon}.svg`
   currentCont.append(currentIconCont);
-  currentTemp.innerText = `${currentTempCel}°`;
 }
 
 const renderSummary = (data) => {
@@ -107,6 +116,28 @@ const renderMap = (latitude,longitude) => {
   document.querySelector('.container').append(dataLocation);
 }
 
+const removeDaily = () => {
+  const dayNodes = document.querySelectorAll('.day')
+  if (dayNodes.length) {
+    dayNodes.forEach((el) => el.remove())
+  }
+}
+
+const removeMap = () => {
+  const map = document.querySelector('.map')
+  const location = document.querySelector('.data-location')
+  if (map) {
+    map.remove()
+    location.remove()
+  } else if (location) {
+    location.remove()
+  }
+}
+
+const showContent = () => {
+  const container = document.querySelector('.container');
+  container.classList.remove('hide');
+}
 
 const renderInfo = (jsonResponse,lang) => {
   if (jsonResponse) {
@@ -126,15 +157,20 @@ const renderInfo = (jsonResponse,lang) => {
     const {latitude} = jsonResponse;
     const {longitude} = jsonResponse;
     getCurrentDate(timezone,lang);
-    renderCurTemp(currentTemp, currentIcon)
+    renderCurTemp(currentTemp)
+    renderCurIcon(currentIcon)
     renderSummary(summary)
     renderFeelsTemp(feelsTemp)
     renderWind(wind)
     renderHumidity(humidity)
+    removeDaily()
     renderDailyWeather(firstDayTemp,1,firstDayIcon)
     renderDailyWeather(secondDayTemp,2,secondDayIcon)
     renderDailyWeather(thirdDayTemp,3,thirdDayIcon)
+    removeMap()
     renderMap(latitude, longitude)
+    hideSpinner()
+    showContent()
       
     return jsonResponse.currently.summary;
 }

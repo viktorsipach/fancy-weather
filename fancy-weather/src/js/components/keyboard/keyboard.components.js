@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import { searchMovie }  from '../app/app.components'
+import { searchWeather }  from '../app/app.components';
 
 export const Keyboard = {
 
@@ -245,7 +245,7 @@ export const Keyboard = {
 	},
 
 	addClickEnterHandler() {
-		searchMovie()
+		searchWeather()
 	},
 
 	addClickDelHandler() {
