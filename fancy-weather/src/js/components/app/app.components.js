@@ -19,6 +19,7 @@ export const searchWeather = () => {
     const info = document.querySelector('.info')
     const lang = document.getElementById('lang').value;
     const keyboard = document.querySelector('.keyboard')
+    const ticker = document.querySelector('.ticker');
     const isCorrect = /^[0-9.!#$%&'*+/=?^_`{|}~-]+/;
 
     if (!keyboard.classList.contains('hide-keyboard')) {
@@ -32,12 +33,14 @@ export const searchWeather = () => {
               .then(response => renderInfo(response,lang))};
             });
         info.innerText = '';
+        ticker.innerText = '';
         showSpinner();
         hideContent();
     } else {
         getUserLocation().then(loc => getCityLocation(loc,lang)).then(loc => getWeather(loc,lang))
         .then(response => renderInfo(response,lang));
         info.innerText = '';
+        ticker.innerText = '';
         showSpinner();
         hideContent();
     }
@@ -89,4 +92,35 @@ export const addClickClearHandler = () => {
     })
 }
 
+export const addClickBtnCelHandler = () => {
+    const btnCel = document.getElementById('cel')
+    const btnFar = document.getElementById('far')
+    btnCel.addEventListener('click', () => {
+        if (btnFar.classList.contains('active')) {
+            btnCel.classList.add('active');
+            btnFar.classList.remove('active');
+            searchWeather();
+        }
+    })
+}
 
+export const addClickBtnFarHandler = () => {
+    const btnCel = document.getElementById('cel')
+    const btnFar = document.getElementById('far')
+    btnFar.addEventListener('click', () => {
+        if (btnCel.classList.contains('active')) {
+            btnCel.classList.remove('active');
+            btnFar.classList.add('active');
+            searchWeather();
+        }
+    })
+}
+
+export const saveActiveBtn = () => {
+    const btnCel = document.getElementById('cel')
+    if (btnCel.classList.contains('active')) {
+        localStorage.setItem('btnActive', 'cel'); 
+    } else {
+        localStorage.setItem('btnActive', 'far'); 
+    }
+}

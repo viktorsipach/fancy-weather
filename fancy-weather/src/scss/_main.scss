@@ -13,7 +13,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('../assets/img/bg.jpg');
-    transition: 1s;
+    transition: background-image 1s ease-out;
 }
 
 
@@ -233,13 +233,12 @@ body {
 }
 
 .info {
-    height: 40px;
+    height: 30px;
     margin: 0;
-    padding: 10px 10px 0 10px;
-    margin-bottom: 30px;
+    padding: 0 10px 0 10px;
     font-size: 24px;
     font-weight: 400;
-    line-height: 40px;
+    line-height: 30px;
     text-align: center;
     color: rgb(214, 44, 26);
 
@@ -248,6 +247,18 @@ body {
     }
 }
 
+.ticker {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 28px;
+    color: #FFFFFF;
+    opacity: 1;
+    transition: 1s;
+    margin: 0 5% 1% 5%;
+    padding-bottom: 5px;
+}
+ 
 .active {
     background: rgba(45, 48, 49, 0.9);
 }
@@ -326,9 +337,9 @@ body {
 
     @media (max-width: 765px) {
         right: -60px;
-        bottom: 275px;
+        bottom: 75%;
     }
-    }
+}
 
 
 .icon-small {
@@ -378,7 +389,7 @@ body {
 }
 
 .map {
-    width: 462px;
+    width: 35%;
     height: 400px;
     display: block;
     position: absolute;
@@ -393,6 +404,7 @@ body {
         top: 35%;
     }
 
+   
     @media (max-width: 760px) {
         width: 100%;
         height: 320px;

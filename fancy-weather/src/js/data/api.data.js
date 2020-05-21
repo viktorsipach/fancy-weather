@@ -18,7 +18,7 @@ const getUrlBg = async (currWeather) => {
       else if (response.ok) {
         const jsonResponse = await response.json();
         const urlImg = jsonResponse.urls.regular;
-        document.querySelector('body').style.backgroundImage = `url(${urlImg})`;
+        document.querySelector('body').style.backgroundImage = `url(${urlImg}),url('../assets/img/bg.jpg')`;
         document.getElementById('refresh').onclick = () => {
         getUrlBg(currWeather);
         }
@@ -70,7 +70,7 @@ const getUrlBg = async (currWeather) => {
   }
   
   const getWeather =  async (location,lang) => {
-    if (location !== undefined) {
+    if (location) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const url = `https://api.darksky.net/forecast/845f34e74cf0b5ee0bfc1da38292e0b2/${location}?lang=${lang}`;
       try {

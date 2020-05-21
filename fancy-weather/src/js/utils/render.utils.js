@@ -139,6 +139,18 @@ const showContent = () => {
   container.classList.remove('hide');
 }
 
+const getDataTicker = (data) => {
+  const tickerCont = document.querySelector('.ticker');
+  const lang = document.getElementById('lang').value;
+  let ticker = '';
+  data.forEach((el,index) => {
+    const NEXT_DAY = 1;
+    const weakDay = getWeekDay(new Date(),index + NEXT_DAY,lang)
+    ticker += `${weakDay} : ${el.summary}   `;
+  })
+  tickerCont.innerText = ticker;
+}
+
 const renderInfo = (jsonResponse,lang) => {
   if (jsonResponse) {
     const { timezone } = jsonResponse;
@@ -172,7 +184,8 @@ const renderInfo = (jsonResponse,lang) => {
     hideSpinner()
     showContent()
     getUrlBg(summary)
-      
+    getDataTicker(jsonResponse.daily.data)
+   
     return summary;
 }
   return null;
