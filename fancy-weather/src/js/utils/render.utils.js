@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { getCurrentDate, getWeekDay } from './date.utils';
-import { initMap } from '../data/api.data';
+import { initMap, getUrlBg } from '../data/api.data';
 import { hideSpinner  } from '../components/spinner/spinner.components';
 
 
@@ -171,8 +171,9 @@ const renderInfo = (jsonResponse,lang) => {
     renderMap(latitude, longitude)
     hideSpinner()
     showContent()
+    getUrlBg(summary)
       
-    return jsonResponse.currently.summary;
+    return summary;
 }
   return null;
 }

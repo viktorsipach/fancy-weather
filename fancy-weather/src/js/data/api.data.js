@@ -95,12 +95,15 @@ const getUrlBg = async (currWeather) => {
     mapCont.className = 'map';
     document.querySelector('.container').append(mapCont);
     mapboxgl.accessToken = 'pk.eyJ1IjoidmlrdG9yc2lwYWNoIiwiYSI6ImNrM215dTBieDBydDIzZG40d3c1NDdxM3UifQ.OaTpJzjxPC0TVFqjijGiOw';
-    new mapboxgl.Map({
+    const map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
     center: [lng,lat], // starting position [lng, lat]
     zoom: 10 // starting zoom
     });
+    new mapboxgl.Marker()
+    .setLngLat([lng,lat])
+    .addTo(map)
   }  
        
   export {getUrlBg, getUserLocation, getCityLocation, getWeather, initMap };

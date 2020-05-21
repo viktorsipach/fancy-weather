@@ -1,6 +1,6 @@
 
 import { showSpinner } from '../spinner/spinner.components';
-import { getUrlBg, getUserLocation, getCityLocation, getWeather } from '../../data/api.data'
+import { getUserLocation, getCityLocation, getWeather } from '../../data/api.data'
 import { renderInfo } from '../../utils/render.utils'
 
 
@@ -78,7 +78,6 @@ export const addClickSearchHandler = () => {
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         searchWeather();
-        getUrlBg();
     })
 }
 
