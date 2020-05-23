@@ -125,6 +125,9 @@ body::before {
     padding: 8px 15px;
     width: 90px;
     opacity: 0.6;
+    &:hover {
+        background: rgba(45, 48, 49, 0.9);
+    }
 
     @media (max-width: 500px) {
         border-radius: 5px;
@@ -252,6 +255,7 @@ body::before {
     line-height: 30px;
     text-align: center;
     color: rgb(214, 44, 26);
+    z-index: 1;
 
     @media (max-width: 500px) {
         padding: 10px 10px 0 10px;
@@ -300,12 +304,17 @@ body::before {
     }
 }
 
-.date {
-    font-size: 24px;
+.date-container {
     margin-bottom: 30px;
+    display: flex;
+}
+
+.date {
+    font-size: 24px; 
 }
 
 .time {
+    font-size: 24px; 
     margin-left: 10px;
 }
 

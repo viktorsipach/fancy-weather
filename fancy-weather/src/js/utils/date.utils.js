@@ -1,3 +1,5 @@
+import { properties }  from '../constants/constants';
+
 const getWeekDay = (date,indexDay,lang) => {
     const daysEng = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     const daysRu = ['ВОСКРЕСЕНИЕ', 'ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА', 'ЧЕТВЕРГ', 'ПЯТНИЦА', 'СУББОТА'];
@@ -30,15 +32,33 @@ const getWeekDay = (date,indexDay,lang) => {
       } 
       const currMonth = date.getMonth(); 
       return months[currMonth]; 
+    }
+
+    const updateTime = (zone) => {
+      const ONE_SECOND = 1000;
+      const lang = document.getElementById('lang').value;
+      const time = document.querySelector('.time');
+      const optionsDate = {hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: `${zone}` };
+      if (properties.timeId) {
+        clearInterval(properties.timeId)
       }
+      properties.timeId = setInterval(() => {
+        const date = new Date();
+        time.innerText = `${date.toLocaleString(`${lang}`,optionsDate).replace(/,/g,'')}`
+      }, ONE_SECOND);
+    }
   
     const getCurrentDate = (zone,lang) => {
+      const CUR_DAY = 0;
       const date = new Date();
       const optionsDate = {hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: `${zone}` };
       const dateCont = document.querySelector('.date');
-      const weekday = getWeekDay(date,0,lang);
+      const time = document.querySelector('.time');
+      const weekday = getWeekDay(date,CUR_DAY,lang);
       const month = getMonth(date,lang);
-      dateCont.innerText = `${weekday.slice(0,3)} ${date.toLocaleString(`${lang}`,{day: 'numeric'}).replace(/,/g,'')} ${month} ${date.toLocaleString(`${lang}`,optionsDate).replace(/,/g,'')}`;
+      time.innerText = `${date.toLocaleString(`${lang}`,optionsDate).replace(/,/g,'')}`
+      dateCont.innerText = `${weekday.slice(0,3)} ${date.toLocaleString(`${lang}`,{day: 'numeric'}).replace(/,/g,'')} ${month}`;
+      updateTime(zone)
     }
   
     export { getWeekDay,getMonth,getCurrentDate };

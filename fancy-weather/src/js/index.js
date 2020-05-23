@@ -59,7 +59,9 @@ window.onload = () => {
     translateInput();
     searchWeather();
     // eslint-disable-next-line no-console
-    console.log('Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather"')
+    console.log(`Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather".
+    'Background-image' по запросу текущей погоды.
+    `)
 }
 
 window.onbeforeunload = () => {

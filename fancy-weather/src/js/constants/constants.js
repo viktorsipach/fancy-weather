@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/prefer-default-export
 export const properties = {
     dataCity: null,
+    timeId:null,
     FIRST_DAY:1,
     SECOND_DAY:2,
     THIRD_DAY:3,
