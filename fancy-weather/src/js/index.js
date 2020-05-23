@@ -13,7 +13,8 @@ import {
   searchWeather,
   addClickBtnCelHandler,
   addClickBtnFarHandler,
-  saveActiveBtn 
+  addClickBtnAudioHandler,
+  saveActiveBtn
 } from './components/app/app.components'
 
 const startSetting = () => {
@@ -53,9 +54,12 @@ window.onload = () => {
     addChangeLangHandler();
     addClickBtnCelHandler();
     addClickBtnFarHandler();
+    addClickBtnAudioHandler();
     showSpinner();
     translateInput();
     searchWeather();
+    // eslint-disable-next-line no-console
+    console.log('Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather"')
 }
 
 window.onbeforeunload = () => {

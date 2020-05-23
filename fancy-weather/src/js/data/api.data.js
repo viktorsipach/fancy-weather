@@ -3,6 +3,8 @@
 /* eslint-disable no-new */
 /* eslint-disable consistent-return */
 
+import { properties }  from '../constants/constants';
+
 const errorHandler = (error) => {
     const info = document.querySelector('.info');
     info.innerText = error;
@@ -50,17 +52,15 @@ const getUrlBg = async (currWeather) => {
         const response = await fetch(proxyUrl + urlToFetch);
       if (response.ok) {
         const jsonResponse = await response.json();
-        const {lat} = jsonResponse.results[0].geometry;
-        const {lng} = jsonResponse.results[0].geometry;
+        const {lat} = jsonResponse.results[properties.FIRST_ELEMENT].geometry;
+        const {lng} = jsonResponse.results[properties.FIRST_ELEMENT].geometry;
         const cityLoc = `${lat},${lng}`;
-        let cityCurrent = jsonResponse.results[0].components.city;
-        const {country} = jsonResponse.results[0].components;
-        const cityCont = document.querySelector('.city');
+        const {country} = jsonResponse.results[properties.FIRST_ELEMENT].components;
+        let cityCurrent = jsonResponse.results[properties.FIRST_ELEMENT].components.city;
         if (!cityCurrent) {
           cityCurrent = '';
         }
-        cityCont.innerHTML = `${cityCurrent} ${country}`;
-          
+        properties.dataCity = `${cityCurrent} ${country}`
         return cityLoc;
         }
         

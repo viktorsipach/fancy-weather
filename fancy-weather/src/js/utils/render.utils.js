@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { getCurrentDate, getWeekDay } from './date.utils';
 import { initMap, getUrlBg } from '../data/api.data';
-import { hideSpinner  } from '../components/spinner/spinner.components';
+import { hideSpinner } from '../components/spinner/spinner.components';
+import { properties }  from '../constants/constants';
 
 
 const fahrToCel = (temp) => {
@@ -116,6 +117,11 @@ const renderMap = (latitude,longitude) => {
   document.querySelector('.container').append(dataLocation);
 }
 
+const renderCity = () => {
+  const cityCont = document.querySelector('.city');
+  cityCont.innerText = properties.dataCity
+}
+
 const removeDaily = () => {
   const dayNodes = document.querySelectorAll('.day')
   if (dayNodes.length) {
@@ -136,7 +142,16 @@ const removeMap = () => {
 
 const showContent = () => {
   const container = document.querySelector('.container');
+  const tickerCont = document.querySelector('.ticker');
   container.classList.remove('hide');
+  tickerCont.classList.remove('hide');
+}
+
+export const hideContent = () => {
+  const tickerCont = document.querySelector('.ticker');
+  const container = document.querySelector('.container');
+  container.classList.add('hide');
+  tickerCont.classList.add('hide');
 }
 
 const getDataTicker = (data) => {
@@ -144,15 +159,15 @@ const getDataTicker = (data) => {
   const lang = document.getElementById('lang').value;
   let ticker = '';
   data.forEach((el,index) => {
-    const NEXT_DAY = 1;
-    const weakDay = getWeekDay(new Date(),index + NEXT_DAY,lang)
-    ticker += `${weakDay} : ${el.summary}   `;
+    const weakDay = getWeekDay(new Date(),index,lang)
+    ticker += `${weakDay} : ${el.summary} `;
   })
   tickerCont.innerText = ticker;
 }
 
 const renderInfo = (jsonResponse,lang) => {
   if (jsonResponse) {
+    const LOAD_DATA = 1300;
     const { timezone } = jsonResponse;
     const currentTemp = jsonResponse.currently.temperature;
     const currentIcon = jsonResponse.currently.icon;
@@ -160,15 +175,16 @@ const renderInfo = (jsonResponse,lang) => {
     const feelsTemp = jsonResponse.currently.apparentTemperature;
     const wind =  jsonResponse.currently.windSpeed;
     const { humidity } = jsonResponse.currently;
-    const firstDayTemp = jsonResponse.daily.data[0].temperatureMax;
-    const firstDayIcon = jsonResponse.daily.data[0].icon;
-    const secondDayTemp = jsonResponse.daily.data[1].temperatureMax;
-    const secondDayIcon= jsonResponse.daily.data[1].icon;
-    const thirdDayTemp = jsonResponse.daily.data[2].temperatureMax;
-    const thirdDayIcon = jsonResponse.daily.data[2].icon;
+    const firstDayTemp = jsonResponse.daily.data[properties.FIRST_ELEMENT].temperatureMax;
+    const firstDayIcon = jsonResponse.daily.data[properties.FIRST_ELEMENT].icon;
+    const secondDayTemp = jsonResponse.daily.data[properties.SECOND_ELEMENT].temperatureMax;
+    const secondDayIcon= jsonResponse.daily.data[properties.SECOND_ELEMENT].icon;
+    const thirdDayTemp = jsonResponse.daily.data[properties.THIRD_ELEMENT].temperatureMax;
+    const thirdDayIcon = jsonResponse.daily.data[properties.THIRD_ELEMENT].icon;
     const {latitude} = jsonResponse;
     const {longitude} = jsonResponse;
     getCurrentDate(timezone,lang);
+    renderCity()
     renderCurTemp(currentTemp)
     renderCurIcon(currentIcon)
     renderSummary(summary)
@@ -176,15 +192,16 @@ const renderInfo = (jsonResponse,lang) => {
     renderWind(wind)
     renderHumidity(humidity)
     removeDaily()
-    renderDailyWeather(firstDayTemp,1,firstDayIcon)
-    renderDailyWeather(secondDayTemp,2,secondDayIcon)
-    renderDailyWeather(thirdDayTemp,3,thirdDayIcon)
+    renderDailyWeather(firstDayTemp,properties.FIRST_DAY,firstDayIcon)
+    renderDailyWeather(secondDayTemp,properties.SECOND_DAY,secondDayIcon)
+    renderDailyWeather(thirdDayTemp,properties.THIRD_DAY,thirdDayIcon)
     removeMap()
     renderMap(latitude, longitude)
     hideSpinner()
-    showContent()
-    getUrlBg(summary)
+    hideContent()
     getDataTicker(jsonResponse.daily.data)
+    getUrlBg(summary)
+    setTimeout(showContent,LOAD_DATA)
    
     return summary;
 }

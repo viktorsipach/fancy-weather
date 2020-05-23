@@ -2,7 +2,7 @@
 /* eslint-disable new-cap */
 /* eslint-disable import/prefer-default-export */
 
-import { searchWeather }  from '../app/app.components'
+import { searchWeather,speakWeather }  from '../app/app.components'
 
 
 const startSpeaking = () => {
@@ -19,10 +19,15 @@ const startSpeaking = () => {
     recognition.start();   
     recognition.onresult = (event) => {
         const resultSpeaking  = event.results[0][0].transcript;
-        mic.classList.remove('mic-active');
-        input.value = resultSpeaking;
-        recognition.stop();
-        searchWeather();   
+        if(resultSpeaking === 'weather' || resultSpeaking === 'погода') {
+            speakWeather()
+        } else {
+            mic.classList.remove('mic-active');
+            input.value = resultSpeaking;
+            recognition.stop();
+            searchWeather();   
+        }
+        
     };
     setTimeout(() => {
         if (mic.classList.contains('mic-active')) {

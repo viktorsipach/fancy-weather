@@ -19,7 +19,6 @@ export const searchWeather = () => {
     const info = document.querySelector('.info')
     const lang = document.getElementById('lang').value;
     const keyboard = document.querySelector('.keyboard')
-    const ticker = document.querySelector('.ticker');
     const isCorrect = /^[0-9.!#$%&'*+/=?^_`{|}~-]+/;
 
     if (!keyboard.classList.contains('hide-keyboard')) {
@@ -33,18 +32,14 @@ export const searchWeather = () => {
               .then(response => renderInfo(response,lang))};
             });
         info.innerText = '';
-        ticker.innerText = '';
         showSpinner();
-        hideContent();
+      
     } else {
         getUserLocation().then(loc => getCityLocation(loc,lang)).then(loc => getWeather(loc,lang))
         .then(response => renderInfo(response,lang));
         info.innerText = '';
-        ticker.innerText = '';
         showSpinner();
-        hideContent();
-    }
-       
+    }      
 }
 
 export const translateInput = () => {
@@ -124,3 +119,45 @@ export const saveActiveBtn = () => {
         localStorage.setItem('btnActive', 'far'); 
     }
 }
+
+const getMessageWeather = () => {
+    const ticker = document.querySelector('.ticker').innerText;
+    const curWeather = document.querySelectorAll('[data-speak]')
+    let message = ''
+    curWeather.forEach((el) => {
+        message += `${el.innerText},`
+    })
+    message += ticker;
+    return message;
+
+}
+
+export const speakWeather = () => {
+    if(window.speechSynthesis) {
+        setTimeout(() => {
+            const lang = document.getElementById('lang').value;
+            const voices = window.speechSynthesis.getVoices()
+            const msg = new SpeechSynthesisUtterance()
+            let voice = null;
+            if (lang === 'en') {
+                const EN_INDEX = 1;
+                voice = voices[EN_INDEX]
+                msg.rate = 1.2;
+            } else {
+                [voice] = voices
+                msg.rate = 1.8;
+            }
+            msg.voice = voice;
+            msg.text = getMessageWeather()
+            window.speechSynthesis.speak(msg)
+          
+        },0)
+    }
+}
+
+export const addClickBtnAudioHandler = () => {
+    const btn = document.querySelector('.controls__audio')
+    btn.addEventListener('click', speakWeather)
+}
+
+

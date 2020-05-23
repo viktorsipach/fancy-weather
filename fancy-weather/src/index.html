@@ -18,7 +18,8 @@
 <body>
     <header class="header">
       <div class="controls">
-        <img src="./assets/img/refresh.png" alt="refresh-btn" class="controls__refresh" id="refresh">
+        <button class="controls__refresh" id="refresh">&#128472</button>
+        <button class="controls__audio">&#128364</button>
         <select name="lang" id="lang" class="controls__lang">
             <option value="en">En</option>
             <option value="ru">Ru</option>
@@ -39,18 +40,18 @@
       </form>
     </header>
     <p class="info"></p>
-    <marquee behavior="scroll" direction="left" class="ticker"></marquee>
+    <marquee class="ticker" behavior="scroll" direction="left" ></marquee>
     <div class="container hide">
     <main class="weather">
-      <h1 data-ticker class="city"></h1>
+      <h1 data-speak class="city"></h1>
       <div class="date"></div>
       <div class="current">
-        <h2 data-ticker class="temp__cur"></h2>
+        <h2 data-speak class="temp__cur"></h2>
         <div class="summary__wrapper">
-          <div data-ticker class="summary"></div>
-          <div data-ticker class="feels"></div>
-          <div data-ticker class="wind"></div>
-          <div data-ticker class="humidity"></div>
+          <div data-speak class="summary"></div>
+          <div data-speak class="feels"></div>
+          <div data-speak class="wind"></div>
+          <div data-speak class="humidity"></div>
         </div>
       </div>
       <div class="daily"></div>
