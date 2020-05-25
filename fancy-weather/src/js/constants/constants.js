@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
 export const properties = {
+    volume: 0.6,
     dataCity: null,
     timeId:null,
     FIRST_DAY:1,

@@ -60,6 +60,7 @@ window.onload = () => {
     searchWeather();
     // eslint-disable-next-line no-console
     console.log(`Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather".
+    Для звука "тише, громче" и "louder, quieter".
     'Background-image' по запросу текущей погоды.
     `)
 }

@@ -68,7 +68,7 @@ body::before {
         margin-top: 15px;
     }
 
-    @media (max-width: 0px) {
+    @media (max-width: 760px) {
         margin: 0 auto;
     }
 }
@@ -352,13 +352,13 @@ body::before {
     bottom: 115px;
 
     @media (max-width: 1000px) {
-        right: 0px;
-        bottom: 250px;
+        right: -115px;
+        bottom: 270px;
     }
 
     @media (max-width: 765px) {
         right: -60px;
-        bottom: 75%;
+        bottom: 70%;
     }
 }
 
@@ -414,7 +414,7 @@ body::before {
     height: 400px;
     display: block;
     position: absolute;
-    top: 4%;
+    top: 8%;
     right: 0;
     border-radius: 10px;
     opacity: 1;

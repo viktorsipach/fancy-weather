@@ -2,6 +2,7 @@
 import { showSpinner } from '../spinner/spinner.components';
 import { getUserLocation, getCityLocation, getWeather } from '../../data/api.data'
 import { renderInfo } from '../../utils/render.utils'
+import { properties }  from '../../constants/constants';
 
 
 const hideKeyboard = () => {
@@ -140,17 +141,17 @@ export const speakWeather = () => {
             const msg = new SpeechSynthesisUtterance()
             let voice = null;
             if (lang === 'en') {
-                const EN_INDEX = 1;
-                voice = voices[EN_INDEX]
+                const ENG_INDEX = 1;
+                voice = voices[ENG_INDEX]
                 msg.rate = 1.2;
             } else {
                 [voice] = voices
                 msg.rate = 1.8;
             }
+            msg.volume = properties.volume;
             msg.voice = voice;
             msg.text = getMessageWeather()
             window.speechSynthesis.speak(msg)
-          
         },0)
     }
 }
