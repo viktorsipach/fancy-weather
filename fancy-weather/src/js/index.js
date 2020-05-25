@@ -44,25 +44,25 @@ const startSetting = () => {
 }
 
 window.onload = () => {
-    Keyboard.addElements()
-    Keyboard.addClickKeyboardHandler()
-    startSetting()
-    addClickSearchHandler();
-    addClickClearHandler();
-    addClickKeyboardHandler();
-    addClickMicHandler();
-    addChangeLangHandler();
-    addClickBtnCelHandler();
-    addClickBtnFarHandler();
-    addClickBtnAudioHandler();
-    showSpinner();
-    translateInput();
-    searchWeather();
-    // eslint-disable-next-line no-console
-    console.log(`Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather".
-    Для звука "тише, громче" и "louder, quieter".
-    'Background-image' по запросу текущей погоды.
-    `)
+  Keyboard.addElements()
+  Keyboard.addClickKeyboardHandler()
+  startSetting()
+  addClickSearchHandler();
+  addClickClearHandler();
+  addClickKeyboardHandler();
+  addClickMicHandler();
+  addChangeLangHandler();
+  addClickBtnCelHandler();
+  addClickBtnFarHandler();
+  addClickBtnAudioHandler();
+  showSpinner();
+  translateInput();
+  searchWeather();
+  // eslint-disable-next-line no-console
+  console.log(`Чтобы проверить голосовое сообщение включите микрофон и скажите "погода" или "weather".
+  Для звука "тише, громче" и "louder, quieter".
+  'Background-image' по запросу текущей погоды.
+  `)
 }
 
 window.onbeforeunload = () => {
