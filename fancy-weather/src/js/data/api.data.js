@@ -6,7 +6,7 @@
 import { properties }  from '../constants/constants';
 import { hideSpinner } from '../components/spinner/spinner.components';
 
-const errorHandler = (error) => {
+export const errorHandler = (error) => {
   hideSpinner()
   const info = document.querySelector('.info');
   info.innerText = error;

@@ -5,10 +5,10 @@ import { hideSpinner } from '../components/spinner/spinner.components';
 import { properties }  from '../constants/constants';
 
 
-const fahrToCel = (temp) => {
+export const fahrToCel = (temp) => {
   if(document.getElementById('cel').classList.contains('active')) {
     const newTemp =  (temp - 32) * 5/9;
-    return  newTemp.toFixed(0);
+    return newTemp.toFixed(0);
   }
   return temp.toFixed(0);
 }
@@ -19,7 +19,7 @@ const renderCurTemp = ( temp ) => {
   currentTemp.innerText = `${currentTempCel}°`;
 }
 
-const renderCurIcon = (nameIcon) => {
+export const renderCurIcon = (nameIcon) => {
   const currentCont =  document.querySelector('.current');
   const icon = document.querySelector('.icon')
   if (icon) {
@@ -51,7 +51,7 @@ const renderFeelsTemp = (data) => {
   }
 }
 
-const renderWind = (data) => {
+export const renderWind = (data) => {
   const wind = document.querySelector('.wind');
   const lang = document.getElementById('lang').value;
   if(lang === 'en') {
@@ -65,7 +65,7 @@ const renderWind = (data) => {
   }
 }
 
-const renderHumidity = (data) => {
+export const renderHumidity = (data) => {
   const humidity = document.querySelector('.humidity');
   const lang = document.getElementById('lang').value;
   if (lang === 'en') {
@@ -129,7 +129,7 @@ const removeDaily = () => {
   }
 }
 
-const removeMap = () => {
+export const removeMap = () => {
   const map = document.querySelector('.map')
   const location = document.querySelector('.data-location')
   if (map) {

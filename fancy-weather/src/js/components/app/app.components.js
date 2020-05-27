@@ -5,7 +5,7 @@ import { renderInfo } from '../../utils/render.utils'
 import { properties }  from '../../constants/constants';
 
 
-const hideKeyboard = () => {
+export const hideKeyboard = () => {
   const keyboard = document.querySelector('.keyboard')
   keyboard.classList.toggle('hide-keyboard');
 }
@@ -120,7 +120,7 @@ export const saveActiveBtn = () => {
   }
 }
 
-const getMessageWeather = () => {
+export const getMessageWeather = () => {
   const ticker = document.querySelector('.ticker').innerText;
   const curWeather = document.querySelectorAll('[data-speak]')
   let message = ''
