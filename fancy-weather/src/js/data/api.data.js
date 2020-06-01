@@ -22,7 +22,11 @@ const getUrlBg = async (currWeather) => {
     else if (response.ok) {
       const jsonResponse = await response.json();
       const urlImg = jsonResponse.urls.regular;
-      document.querySelector('body').style.backgroundImage = `url(${urlImg}),url('../assets/img/bg.jpg')`;
+      const bgImg = new Image();
+      bgImg.onload = () => {
+        document.querySelector('body').style.backgroundImage = `url(${bgImg.src}),url('../assets/img/bg.jpg')`;
+      }
+      bgImg.src = urlImg;
       document.getElementById('refresh').onclick = () => {
       getUrlBg(currWeather);
       }
