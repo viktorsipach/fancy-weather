@@ -43,7 +43,7 @@ const getUserLocation =  async () => {
       const response = await fetch(proxyUrl + urlToFetch);
     if (response.ok) {
       const jsonResponse = await response.json();
-      const currentLocation = jsonResponse.loc;
+      const currentLocation = jsonResponse.city;
       return currentLocation;
       }   
     } catch (error) {
@@ -61,19 +61,14 @@ const getCityLocation =  async (city,lang) => {
       const {lat} = jsonResponse.results[properties.FIRST_ELEMENT].geometry;
       const {lng} = jsonResponse.results[properties.FIRST_ELEMENT].geometry;
       const cityLoc = `${lat},${lng}`;
-      const {country} = jsonResponse.results[properties.FIRST_ELEMENT].components;
-      let cityCurrent = jsonResponse.results[properties.FIRST_ELEMENT].components.city;
-      if (!cityCurrent) {
-        cityCurrent = '';
-      }
-      properties.dataCity = `${cityCurrent} ${country}`
+      const cityCurrent = jsonResponse.results[properties.FIRST_ELEMENT].formatted;
+      properties.dataCity = `${cityCurrent}`
       return cityLoc;
-      }
-      
+    }  
     } catch (error) {
         errorHandler(error)
     }
-  }
+}
   
 const getWeather =  async (location,lang) => {
   if (location) {
