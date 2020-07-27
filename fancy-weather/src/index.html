@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>fancy-weather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/favicon.ico"> 
+  <link href="./css/reset.css">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script> 
+</head>
+
+<body>
+    <header class="header">
+      <div class="controls">
+        <button class="controls__refresh" id="refresh">&#128472</button>
+        <button class="controls__audio">&#128364</button>
+        <select name="lang" id="lang" class="controls__lang">
+            <option value="en">En</option>
+            <option value="ru">Ru</option>
+            <option value="be">Be</option>
+        </select>
+        <button id="far" class="controls__far">°F</button>
+        <button id="cel" class="controls__cel">°C</button>
+      </div>
+      <form class="search">
+        <input class="search-input" type="text" placeholder="Search city" autofocus>
+        <button class="search-btn" type="submit">Search</button>
+        <svg class="spinner hide-spinner" viewBox="0 0 50 50">
+          <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+        <span data-name="Clear" class="search-clear tooltip"></span>
+        <span data-name="Search by voice" class="search-mic tooltip"></span>
+        <span data-name="Keyboard" class="search-tia tooltip"></span>
+      </form>
+    </header>
+    <p class="info"></p>
+    <marquee class="ticker" behavior="scroll" direction="left" ></marquee>
+    <div class="container hide">
+    <main class="weather">
+      <h1 data-speak class="city"></h1>
+      <div class="date-container">
+        <p class="date"></p>
+        <p class="time"></p>
+      </div>
+      <div class="current">
+        <h2 data-speak class="temp__cur"></h2>
+        <div class="summary__wrapper">
+          <div data-speak class="summary"></div>
+          <div data-speak class="feels"></div>
+          <div data-speak class="wind"></div>
+          <div data-speak class="humidity"></div>
+        </div>
+      </div>
+      <div class="daily"></div>
+    </main>
+  </div>
+<script type="text/javascript" src="./js/index.js"></script></body>
+</html>

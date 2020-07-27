@@ -1,0 +1,120 @@
+.controls {
+    width: 260px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    z-index: 1;
+
+    @media (max-width: 760px) {
+        margin: 15px auto;
+    }
+  
+    &__refresh {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 32px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+        &:hover {
+            background: rgba(45, 48, 49, 0.9);
+        }
+    }
+
+    &__lang {
+        width: 55px;
+        height: 45px;
+        border: 0;
+        background: rgba(76, 82, 85, 0.6);
+        border-radius: 5px;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        cursor: pointer;
+        &:hover {
+            background: rgba(45, 48, 49, 0.9);
+        }
+    }
+
+    &__far {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+        &:hover {
+            background: rgba(45, 48, 49, 0.9);
+        }
+    }
+
+    &__cel {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        margin-right: 3px;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+        &:hover {
+            background: rgba(45, 48, 49, 0.9);
+        }
+    }
+
+    &__audio {
+        width: 45px;
+        height: 45px;
+        border: 0;
+        margin-right: 3px;
+        border-radius: 5px;
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        user-select: none;
+        background: rgba(76, 82, 85, 0.6);
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(45, 48, 49, 0.9);
+        }
+    }
+}
+
+.active {
+    background: rgba(45, 48, 49, 0.9);
+}
+
